@@ -25,11 +25,19 @@ const sampleResult={
     imageUrl: 'https://i.balaan.io/goods/prod/202010/445/4456312-0.jpg'
 };
 
-async function scrape(pageIdx){
+const category={
+   Clothes:'010002',
+   Shoes:'010003',
+   Bags:'010004',
+   Accessories:'010005',
+   Jewels:'010006'
+}
+
+async function scrape(pageIdx, key){
    //  const result=await request.get('');
    //  const $=await cheerio.load(result);
 
-    await nightmare.goto('https://www.balaan.co.kr/shop/goods/goods_list.php?category=010001'+'&page='+pageIdx);
+    await nightmare.goto('https://www.balaan.co.kr/shop/goods/goods_list.php?category='+category[key]+'&page='+pageIdx);
       
 
     const result = await nightmare.evaluate(() => {
@@ -86,17 +94,22 @@ async function scrape(pageIdx){
 // }
 
 async function itemsScraper(){
-   let items=[];
-   for(let i=1 ; i<3 ; i++){
-      let data=await scrape(i);
-      // console.log(Array.isArray(data));
-      // items.concat(data);
-      items=[...items, ...data];
-      // console.log(data)
+   let items={};
+   for(const [key] of Object.entries(category)){
+      for(let i=1 ; i<3 ; i++){
+         let data=await scrape(i,key);
+         // console.log(Array.isArray(data));
+         // items.concat(data);
+         if(!items[key]) items[key]=[];
+         items[key]=[...items[key], ...data];
+         // console.log(data)
+         // console.log(items[key].length);
+      }
    }
+   
     // let imageAdded=await scrapeImageUrl(items);
     console.log(items);
-    console.log(items.length);
+    
 
 //     Items.destroy({
 //         where: {},
