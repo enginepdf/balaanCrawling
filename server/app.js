@@ -4,9 +4,8 @@ const cors = require('cors');
 const models = require('./models/index');
 const morgan = require('morgan');
 
-var userRouter = require("./routes/user");
-var buildingRouter = require("./routes/items");
-var admindRouter = require("./routes/admin");
+let router = require("./routes/routes.js");
+
 // models.sequelize.sync().then( () => {
 //   console.log("DB connection succeeded");
 // }).catch(err => {
@@ -30,9 +29,8 @@ app.use(
 app.use(morgan('dev'));
 app.use(express.static(__dirname + '/public')); 
 
-app.use('/user', userRouter);
-app.use('/items', itemsRouter);
-app.use('/admin', admindRouter);
+app.use('/', router);
+
 
 app.listen(port, () => {
     console.log(`server listen on ${port}`);
