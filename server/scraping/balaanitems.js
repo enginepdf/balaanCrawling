@@ -18,11 +18,11 @@ const nightmare=Nightmare({show:false});  // show browser
 const fs=require('fs');
 
 const sampleResult={
-    title:"STONE ISLAND",
-    description:"와펜 맨투맨 색상 731563020",
-    price:'351,000원',
-    descriptionUrl: 'https://www.balaan.co.kr/shop/goods/goods_view.php?goodsno=4007809',
-    imageUrl: "http://res.heraldm.com/content/image/2020/02/14/20200214000472_0.jpg"
+    title:"THOM BROWNE",
+    description:"사선완장 남성 가디건 MJT167A 00535",
+    price:'796,000원',
+    descriptionUrl: 'https://www.balaan.co.kr/shop/goods/goods_view.php?goodsno=4456312',
+    imageUrl: 'https://i.balaan.io/goods/prod/202010/445/4456312-0.jpg'
 };
 
 async function scrape(pageIdx){
