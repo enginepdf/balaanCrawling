@@ -30,7 +30,7 @@ const category={
    Shoes:'010003',
    Bags:'010004',
    Accessories:'010005',
-   Jewels:'010006'
+   Jewelry:'010006'
 }
 
 async function scrape(pageIdx, key){
@@ -109,6 +109,7 @@ async function itemsScraper(){
    
     // let imageAdded=await scrapeImageUrl(items);
     console.log(items);
+   //  console.log(Object.keys(items));
     
 
 //     Items.destroy({
