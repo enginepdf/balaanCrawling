@@ -21,14 +21,15 @@ const sampleResult={
     title:"STONE ISLAND",
     description:"와펜 맨투맨 색상 731563020",
     price:'351,000원',
+    descriptionUrl: 'https://www.balaan.co.kr/shop/goods/goods_view.php?goodsno=4007809',
     imageUrl: "http://res.heraldm.com/content/image/2020/02/14/20200214000472_0.jpg"
 };
 
-async function scrape(){
+async function scrape(pageIdx){
    //  const result=await request.get('');
    //  const $=await cheerio.load(result);
 
-    await nightmare.goto('https://www.balaan.co.kr/shop/goods/goods_list.php?category=010001')
+    await nightmare.goto('https://www.balaan.co.kr/shop/goods/goods_list.php?category=010001'+'&page='+pageIdx);
       
 
     const result = await nightmare.evaluate(() => {
@@ -85,9 +86,18 @@ async function scrape(){
 // }
 
 async function itemsScraper(){
-    let items=await scrape();
+   let items=[];
+   for(let i=1 ; i<3 ; i++){
+      let data=await scrape(i);
+      // console.log(Array.isArray(data));
+      // items.concat(data);
+      items=[...items, ...data];
+      // console.log(data)
+   }
     // let imageAdded=await scrapeImageUrl(items);
     console.log(items);
+    console.log(items.length);
+
 //     Items.destroy({
 //         where: {},
 //         truncate: true
