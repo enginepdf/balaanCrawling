@@ -52,20 +52,42 @@ async function scrape(){
               .find('div.info_area > a > dl > dd > div > div.price') 
               .text().trim();   
               
+           const descriptionUrl='https://www.balaan.co.kr'+$(element)
+              .find('div.thumb_area > div.thumb > a')
+              .attr('href');
+            
            const imageUrl=$(element)
-              .find('a > imgdiv.thumb_area > div.thumb > a > img')
-              .attr('src')
+              .find('div.thumb_area > div.thumb > a > img')
+              .attr('data-original');
 
-           return {title, description, price, imageUrl};
+           return {title, description, price, descriptionUrl, imageUrl};
        })
        .get()
     return items;
 }
 
+// async function scrapeImageUrl(items){
+//     for(let i=0 ; i<items.length ; i++){
+//        if(items[i].descriptionUrl===undefined) continue;
+//        let descriptionUrl='https://www.balaan.co.kr'+items[i].descriptionUrl
+//         try{
+//             const imageUrl=await nightmare.goto(descriptionUrl)
+//             .evaluate(()=>
+//             $('#goods_view > div > ul > li:nth-child(2) > img').attr('src')
+//             )
+//           items[i].imageUrl=imageUrl;
+//         } catch(err){
+//             console.error(err);
+//         }
+//     }
+//     await nightmare.end()
+//     return items;
+// }
 
 async function itemsScraper(){
     let items=await scrape();
-    console.log(items)
+    // let imageAdded=await scrapeImageUrl(items);
+    console.log(items);
 //     Items.destroy({
 //         where: {},
 //         truncate: true
