@@ -8,7 +8,7 @@
 
 //  npx sequelize-cli db:migrate
 
-// const { Items } = require('../models');
+const { Items } = require('../models');
 
 const request = require("request-promise");
 const regularRequest=require('request');
@@ -95,8 +95,9 @@ async function scrape(pageIdx, key){
 
 async function itemsScraper(){
    let items={};
-   for(const [key] of Object.entries(category)){
+   // for(const [key] of Object.entries(category)){
       for(let i=1 ; i<3 ; i++){
+         let key='010001' // new in
          let data=await scrape(i,key);
          // console.log(Array.isArray(data));
          // items.concat(data);
@@ -105,26 +106,26 @@ async function itemsScraper(){
          // console.log(data)
          // console.log(items[key].length);
       }
-   }
+   // }
    
     // let imageAdded=await scrapeImageUrl(items);
     console.log(items);
    //  console.log(Object.keys(items));
     
 
-//     Items.destroy({
-//         where: {},
-//         truncate: true
-//    })
+   Items.destroy({
+        where: {},
+        truncate: true
+   })
 
-//    for(let i=0 ; i<items.length ; i++){
-//    Items.create({title : items[i].title, price : items[i].price, description : items[i].description,
-//     imageUrl : items[i].imageUrl})
-//         .then((data, err) => {
-//           if(err) console.log('items insertion error')
-//           else console.log('items scraped')
-//         });
-//    }
+   for(let i=0 ; i<items.length ; i++){
+    Items.create({title : items[i].title, price : items[i].price, description : items[i].description,
+    imageUrl : items[i].imageUrl})
+        .then((data, err) => {
+          if(err) console.log('items insertion error')
+          else console.log('items scraped')
+        });
+   }
 }
 
 itemsScraper();
