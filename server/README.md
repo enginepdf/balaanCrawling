@@ -12,3 +12,5 @@ npm install --save-dev sequelize-cli
 export DATABASE_PASSWORD='your password';
 
 npx sequelize-cli db:migrate
+
+export SECRET_KEY='';   // for jwt
