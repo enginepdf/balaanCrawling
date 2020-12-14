@@ -8,10 +8,8 @@
 
 //  npx sequelize-cli db:migrate
 
-const { Items } = require('../models');
+const { items } = require('../models');
 
-const request = require("request-promise");
-const regularRequest=require('request');
 const cheerio=require("cheerio");
 const Nightmare=require("nightmare");
 const nightmare=Nightmare({show:false});  // show browser
@@ -26,6 +24,7 @@ const sampleResult={
 };
 
 const category={
+   NewIn:'010001',
    Clothes:'010002',
    Shoes:'010003',
    Bags:'010004',
@@ -94,36 +93,37 @@ async function scrape(pageIdx, key){
 // }
 
 async function itemsScraper(){
-   let items={};
+   // let data={};
+      let data;
    // for(const [key] of Object.entries(category)){
       for(let i=1 ; i<3 ; i++){
-         let key='010001' // new in
-         let data=await scrape(i,key);
+         let key='NewIn' // new in
+         data=await scrape(i,key);
          // console.log(Array.isArray(data));
          // items.concat(data);
-         if(!items[key]) items[key]=[];
-         items[key]=[...items[key], ...data];
+         // if(!data[key]) data[key]=[];
+         // data[key]=[...data[key], ...scraped];
          // console.log(data)
          // console.log(items[key].length);
       }
    // }
    
     // let imageAdded=await scrapeImageUrl(items);
-    console.log(items);
+    console.log(data);
    //  console.log(Object.keys(items));
     
 
-   Items.destroy({
+   items.destroy({
         where: {},
         truncate: true
    })
 
-   for(let i=0 ; i<items.length ; i++){
-    Items.create({title : items[i].title, price : items[i].price, description : items[i].description,
-    imageUrl : items[i].imageUrl})
-        .then((data, err) => {
-          if(err) console.log('items insertion error')
-          else console.log('items scraped')
+   for(let i=0 ; i<data.length ; i++){
+    items.create({title : data[i].title, description:data[i].description, price : data[i].price, descriptionUrl : data[i].descriptionUrl,
+    imageUrl : data[i].imageUrl})
+        .then((item, err) => {
+          if(err) console.log('data insertion error')
+          else console.log('data scraped')
         });
    }
 }
