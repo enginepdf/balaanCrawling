@@ -9,7 +9,7 @@ router.post('/signin', controller.users.signin);
 
 router.post('/signup', controller.users.signup);
 
-router.post('/signout', controller.users.signout);
+router.get('/signout', controller.users.signout);
 
 module.exports = router;
 
