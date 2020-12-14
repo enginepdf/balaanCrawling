@@ -71,7 +71,7 @@ module.exports = {
                 // res.status(200).cookies('token', token);
                 res.cookie('token', token);
                 
-                res.status(200).send('signin');
+                res.status(200).send('signin succeeded');
                 res.redirect('/');
                 res.end();
                 // res.json({id: data.id, email: data.email});
