@@ -1,5 +1,6 @@
 const { items, users } = require('../models');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 
 module.exports = {
   items: {
@@ -50,8 +51,11 @@ module.exports = {
           res.status(404);
           res.end('unvalid user');
         } else { 
-   
-          if(data.dataValues.password === password){  
+
+          bcrypt
+          .compare(password, data.dataValues.password)
+          .then(matched => {
+            if(matched){
             let payload = {
               email : email
             }
@@ -67,7 +71,8 @@ module.exports = {
                 console.log('token', token)
                 // res.status(200).cookies('token', token);
                 res.cookie('token', token)
-                res.json({id: data.dataValues.id, email: data.dataValues.email});
+                res.redirect('/');
+                // res.json({id: data.dataValues.id, email: data.dataValues.email});
                 res.end();
               }
             })
@@ -77,26 +82,35 @@ module.exports = {
             res.status(404);
             res.end('unvalid user');
           }
-        }
-      })
+       })
+      }
+     })
     },
     
     signup: function (req, res) { // signup
       const { email, password, phone } = req.body;
       
+      bcrypt
+      .hash(password, 12)
+      .then(hashedPw => {
         users.findOne({where: { email: email }})
         .then((data) => {
           if(data){
             res.status(409).send('email already exists');
             res.end();
           } else {
-            users.create({email, password, phone})
+            users.create({email, hashedPw, phone})
             .then((data) => {
+              res.redirect('/');
               res.status(200).send('signup completed');
               res.end();
+            })
+            .catch(err => {
+              console.log(err);
             });
           }
         });
+      });
     },
 
     signout: function (req, res) {
