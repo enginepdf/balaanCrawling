@@ -41,7 +41,7 @@ module.exports = {
   },
 
   users: {
-    post: function (req, res) {  // signin
+    signin: function (req, res) {  
       const { email, password } = req.body
       users.findOne({where: {email : email}})
       .then(data => {
@@ -80,7 +80,8 @@ module.exports = {
         }
       })
     },
-    post: function (req, res) { // signup
+    
+    signup: function (req, res) { // signup
       const { email, password, phone } = req.body;
       
         users.findOne({where: { email: email }})
@@ -96,7 +97,12 @@ module.exports = {
             });
           }
         });
-       
+    },
+
+    signout: function (req, res) {
+      res.clearCookie('token',{path: '/'});
+      res.redirect('/');
+      res.end();
     }
   }
 };

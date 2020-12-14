@@ -5,10 +5,11 @@ router.get('/items', controller.items.get);
 
 // router.post('/items', controller.items.post);
 
-router.get('/users', controller.users.get);
+router.post('/signin', controller.users.signin);
 
-router.post('/signup', controller.users.post);
+router.post('/signup', controller.users.signup);
 
+router.post('/signout', controller.users.signout);
 
 module.exports = router;
 
