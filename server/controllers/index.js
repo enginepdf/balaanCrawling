@@ -45,17 +45,16 @@ module.exports = {
     signin: function (req, res) {  
       const { email, password } = req.body
       users.findOne({where: {email : email}})
-      .then(data => {
+      .then(user => {
         // console.log(data);
-        if(!data){  
+        if(!user){  
           res.status(404);
           res.end('unvalid user');
         } else { 
-
           bcrypt
-          .compare(password, data.dataValues.password)
+          .compare(password, user.password)
           .then(matched => {
-            if(matched){
+           if(matched){
             let payload = {
               email : email
             }
@@ -68,11 +67,13 @@ module.exports = {
                 res.status(500);
                 res.end();
               } else {
-                console.log('token', token)
+                console.log('token', token);
                 // res.status(200).cookies('token', token);
-                res.cookie('token', token)
+                res.cookie('token', token);
+                
+                res.status(200).send('signin');
                 res.redirect('/');
-                // res.json({id: data.dataValues.id, email: data.dataValues.email});
+                // res.json({id: data.id, email: data.email});
                 res.end();
               }
             })
@@ -101,8 +102,8 @@ module.exports = {
           } else {
             users.create({email:email, password:hashedPw, phone:phone})
             .then((data) => {
+              res.status(201).send('signup completed');
               res.redirect('/');
-              res.status(200).send('signup completed');
               res.end();
             })
             .catch(err => {
