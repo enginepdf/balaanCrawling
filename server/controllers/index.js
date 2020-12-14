@@ -73,6 +73,7 @@ module.exports = {
                 
                 res.status(200).send('signin');
                 res.redirect('/');
+                res.end();
                 // res.json({id: data.id, email: data.email});
               }
             })
@@ -103,6 +104,7 @@ module.exports = {
             .then((data) => {
               res.status(201).send('signup completed');
               res.redirect('/');
+              res.end();
             })
             .catch(err => {
               console.log(err);
@@ -113,9 +115,11 @@ module.exports = {
     },
 
     signout: function (req, res) {
-      res.clearCookie('token');
+      // console.log(req.headers.cookie);
+      res.clearCookie('token',{path:'/'});
       res.status(200).send('signed out')
-      res.redirect('/');
+      // res.redirect('/');
+      res.end();
     }
   }
 };
