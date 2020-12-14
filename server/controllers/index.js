@@ -99,7 +99,7 @@ module.exports = {
             res.status(409).send('email already exists');
             res.end();
           } else {
-            users.create({email, password:hashedPw, phone})
+            users.create({email:email, password:hashedPw, phone:phone})
             .then((data) => {
               res.redirect('/');
               res.status(200).send('signup completed');
