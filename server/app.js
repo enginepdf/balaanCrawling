@@ -2,7 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const models = require('./models/index');
-const morgan = require('morgan');
+const morgan=require('morgan');
+const compression=require('compression');
+const helmet=require('helmet');
 
 let router = require("./routes/routes.js");
 
@@ -13,6 +15,8 @@ let router = require("./routes/routes.js");
 //   console.log(err);
 // })
 const app = express();
+app.use(helmet());
+app.use(compression());
 
 const port = 3050;
 
