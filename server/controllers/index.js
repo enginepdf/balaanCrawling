@@ -74,7 +74,6 @@ module.exports = {
                 res.status(200).send('signin');
                 res.redirect('/');
                 // res.json({id: data.id, email: data.email});
-                res.end();
               }
             })
             // res.status(200).send(data.dataValues);
@@ -104,7 +103,6 @@ module.exports = {
             .then((data) => {
               res.status(201).send('signup completed');
               res.redirect('/');
-              res.end();
             })
             .catch(err => {
               console.log(err);
