@@ -14,13 +14,13 @@ let router = require("./routes/routes.js");
 // })
 const app = express();
 
-const port = 3040;
+const port = 3050;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(
   cors({
-    origin: ['http://localhost:3000', 'http://localhost:3040'],
+    origin: ['http://localhost:3000', 'http://localhost:3050'],
     methods: ['GET', 'POST'],
     credentials: true
   })
