@@ -94,11 +94,12 @@ async function scrape(pageIdx, key){
 
 async function itemsScraper(){
    // let data={};
-      let data;
+      let data=[];
    // for(const [key] of Object.entries(category)){
-      for(let i=1 ; i<3 ; i++){
+      for(let i=1 ; i<6 ; i++){
          let key='NewIn' // new in
-         data=await scrape(i,key);
+         let scraped=await scrape(i,key);
+         data=[...data, ...scraped];
          // console.log(Array.isArray(data));
          // items.concat(data);
          // if(!data[key]) data[key]=[];
