@@ -115,9 +115,9 @@ module.exports = {
     },
 
     signout: function (req, res) {
-      res.clearCookie('token',{path: '/'});
+      res.clearCookie('token');
+      res.status(200).send('signed out')
       res.redirect('/');
-      res.end();
     }
   }
 };
