@@ -115,11 +115,14 @@ module.exports = {
     },
 
     signout: function (req, res) {
-      // console.log(req.headers.cookie);
-      res.clearCookie('token',{path:'/'});
-      res.status(200).send('signed out')
-      // res.redirect('/');
-      res.end();
+      if(req.headers.cookie){
+        res.clearCookie('token',{path:'/'});
+        res.status(200).send('signed out');
+        // res.redirect('/');
+        res.end();
+      } else{
+        res.status(401).send('login first');
+      }
     }
   }
 };
