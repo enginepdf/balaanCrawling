@@ -4,7 +4,8 @@ services:
     image: 'mysql:latest'
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_ROOT_PASSWORD: 1234
+      - MYSQL_DATABASE: balaan
   nginx:
     restart: always
     build:
@@ -23,8 +24,9 @@ services:
       - /app/node_modules # just use the directory
       - ./server:/app # copy to app in container
     environment:
-      - SECRET_KEY=jwt
-      - DATABASE_PASSWORD=1234
+      - SECRET_KEY: jwt
+      - DATABASE_PASSWORD: 1234
+      - DATABASE_HOST: mysql
     # depends_on:
     #   - mysql
   client:
