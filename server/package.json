@@ -1,7 +1,9 @@
 {
   "name": "crawler",
   "version": "1.0.0",
-  "description": "mysql -u root -p",
+  "engines": {
+    "node": "^15.4.0"
+  },
   "main": "app.js",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -16,7 +18,6 @@
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
     "nightmare": "^3.0.2",
-    "node": "^15.4.0",
     "sequelize": "^6.3.5",
     "sequelize-cli": "^6.2.0"
   },
