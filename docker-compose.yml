@@ -13,9 +13,9 @@ services:
       context: ./nginx
     ports:
       - '3060:80' # local to inside of container
-    # depends_on:
-    #   - api
-    #   - client
+    depends_on:
+      - api
+      - client
   api:
     build:
       dockerfile: Dockerfile.dev

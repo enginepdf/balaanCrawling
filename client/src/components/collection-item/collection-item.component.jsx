@@ -2,15 +2,15 @@ import React from 'react';
 
 import './collection-item.styles.scss';
 
-const CollectionItem = ({ id, title, price, imageUrl, descriptionUrl }) => (
-  <div className='collection-item'>
-    <a
+const CollectionItem = ({ title, price, imageUrl, descriptionUrl }) => (
+  <div className='collection-item'> 
+    <div 
       className='image'
       style={{
         backgroundImage: `url(${imageUrl})`,
         cursor:'pointer'
       }}
-      href={descriptionUrl}
+      onclick="location.href="
     />
     <div className='collection-footer'>
       <span className='name'>{title}</span>

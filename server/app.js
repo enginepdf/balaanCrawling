@@ -18,7 +18,7 @@ const app = express();
 app.use(helmet());
 app.use(compression());
 
-const port = 3050;
+const port = 3070;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
