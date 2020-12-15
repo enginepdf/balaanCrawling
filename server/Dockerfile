@@ -1,6 +1,7 @@
-FROM node:14.14.0-alpine
+FROM node:latest
 WORKDIR "/app"
 COPY ./package.json ./
 RUN npm install
 COPY . .
-CMD npx sequelize-cli db:migrate; node app.js; node scrapingItems.js
+CMD ["node", "app.js"]
+

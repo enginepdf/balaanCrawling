@@ -2,12 +2,17 @@ version: '3'
 services:
   mysql:
     image: 'mysql:latest'
+    command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 1234
       MYSQL_DATABASE: balaan
+      MYSQL_USER: user 
+      MYSQL_PASSWORD: 1234
     ports:
       - '3306:3306'
+    expose:
+      - "3306"
   nginx:
     restart: always
     build:
@@ -29,8 +34,9 @@ services:
       SECRET_KEY: jwt
       DATABASE_PASSWORD: 1234
       DATABASE_HOST: mysql
-    # depends_on:
-    #   - mysql
+      DATABASE_USER: user
+    depends_on:
+      - mysql
   client:
     build:
       dockerfile: Dockerfile.dev

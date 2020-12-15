@@ -33,6 +33,7 @@ const category={
 }
 
 async function scrape(pageIdx, key){
+  try {
    //  const result=await request.get('');
    //  const $=await cheerio.load(result);
 
@@ -72,6 +73,9 @@ async function scrape(pageIdx, key){
        })
        .get();
     return items;
+  } catch (err){
+     console.log(err);
+  }
 }
 
 // async function scrapeImageUrl(items){
@@ -93,13 +97,15 @@ async function scrape(pageIdx, key){
 // }
 
 async function itemsScraper(){
+  try{
    // let data={};
       let data=[];
    // for(const [key] of Object.entries(category)){
       for(let i=1 ; i<6 ; i++){
          let key='NewIn' // new in
          let scraped=await scrape(i,key);
-         data=[...data, ...scraped];
+         // data=[...data, ...scraped];
+         data=data.concat(scraped);
          // console.log(Array.isArray(data));
          // items.concat(data);
          // if(!data[key]) data[key]=[];
@@ -110,7 +116,6 @@ async function itemsScraper(){
    // }
    
     // let imageAdded=await scrapeImageUrl(items);
-    console.log(data);
    //  console.log(Object.keys(items));
     
 
@@ -127,8 +132,11 @@ async function itemsScraper(){
           else console.log('data scraped')
         });
    }
-
+   
    await nightmare.end();
+  } catch(err){
+     console.log(err);
+  }
 }
 
 itemsScraper();

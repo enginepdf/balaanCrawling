@@ -3,12 +3,13 @@
   "private": true,
   "dependencies": {
     "node-sass": "4.14.1",
+    "npm": "^7.1.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
-    "react-scripts": "3.0.0"
+    "react-scripts": "^3.4.4"
   },
   "resolutions": {
     "babel-jest": "24.7.1"
