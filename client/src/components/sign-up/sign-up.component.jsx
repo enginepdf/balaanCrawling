@@ -25,7 +25,7 @@ class SignUp extends React.Component {
       alert("passwords don't match");
       return;
     }
-    fetch('http://localhost:3050/signup', {
+    fetch('api/signup', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'
