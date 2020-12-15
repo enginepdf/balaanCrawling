@@ -1,0 +1,40 @@
+version: '3'
+services:
+  mysql:
+    image: 'mysql:latest'
+    restart:always
+    environment:
+      - MYSQL_PASSWORD=1234
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - '3060:80' # local to inside of container
+    # depends_on:
+    #   - api
+    #   - client
+  api:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./server
+    volumes:
+      - /app/node_modules # just use the directory
+      - ./server:/app # copy to app in container
+    environment:
+      - SECRET_KEY=jwt
+    # depends_on:
+    #   - mysql
+  client:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./client
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+    stdin_open: true
+
+
+      # docker-compose up
+      #  docker-compose up --build

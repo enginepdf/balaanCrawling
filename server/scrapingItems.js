@@ -8,7 +8,7 @@
 
 //  npx sequelize-cli db:migrate
 
-const { items } = require('../models');
+const { items } = require('./models');
 
 const cheerio=require("cheerio");
 const Nightmare=require("nightmare");
@@ -70,7 +70,7 @@ async function scrape(pageIdx, key){
 
            return {title, description, price, descriptionUrl, imageUrl};
        })
-       .get()
+       .get();
     return items;
 }
 
@@ -127,6 +127,8 @@ async function itemsScraper(){
           else console.log('data scraped')
         });
    }
+
+   await nightmare.end();
 }
 
 itemsScraper();
