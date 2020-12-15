@@ -10,7 +10,7 @@ const CollectionItem = ({ title, price, imageUrl, descriptionUrl }) => (
         backgroundImage: `url(${imageUrl})`,
         cursor:'pointer'
       }}
-      onclick="location.href="
+      onclick={`location.href=${descriptionUrl}`}
     />
     <div className='collection-footer'>
       <span className='name'>{title}</span>
