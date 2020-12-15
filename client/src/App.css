@@ -1,0 +1,9 @@
+body {
+  font-family: 'Open Sans Condensed';
+  padding: 20px 40px;   /*  top, bottom / left, right */
+}   
+
+a {   /* header의 html 상의 tag name */
+  text-decoration: none;
+  color: black;
+}
