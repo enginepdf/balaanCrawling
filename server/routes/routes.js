@@ -5,6 +5,8 @@ router.get('/items', controller.items.get);
 
 // router.post('/items', controller.items.post);
 
+router.get('/insert', controller.items.insert);
+
 router.post('/signin', controller.users.signin);
 
 router.post('/signup', controller.users.signup);

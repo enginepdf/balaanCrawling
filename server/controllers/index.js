@@ -6,10 +6,6 @@ const fs=require('fs');
 module.exports = {
   items: {
     get: function (req, res) {
-      
-      fs.readFileSync('./db.json', 'utf8', function(err, data){
-        res.json(data);
-      })
 
       items.findAll({
         attribute: ["title", "description", "price", "descriptionUrl", "imageUrl"],
@@ -22,29 +18,33 @@ module.exports = {
       });
     },
 
-    // post: async function (req, res) {
-    //   const { title, description, price, descriptionUrl, imageUrl } = req.body;
+    insert: async function (req, res) {
+      
+      items.destroy({
+        where: {},
+        truncate: true
+      })
+      fs.readFileSync('./db.json', 'utf8', function(err, data){
+        for(let i=0; i<data.length ; i++){
+          items
+          .create({
+           title:data[i].title,
+           description:data[i].description,
+           price:data[i].price,
+           descriptionUrl:data[i].descriptionUrl,
+           imageUrl:data[i].imageUrl
+          })
+          .then((data, err) => {
+            if (err) {
+              return res.send(err);
+            }
+            res.sendStatus(201);
+          });
+        }
+      })
 
-    //   // let itemId = await items.findOne({
-    //   //   attribute: ["title"],
-    //   //   where: { title: title }
-    //   // }).then(result => result.dataValues.id)
-
-    //   items
-    //     .create({
-    //      title,
-    //      description,
-    //      price,
-    //      descriptionUrl,
-    //      imageUrl
-    //     })
-    //     .then((data, err) => {
-    //       if (err) {
-    //         return res.send(err);
-    //       }
-    //       res.sendStatus(201);
-    //     });
-    // }
+      
+    }
   },
 
   users: {
