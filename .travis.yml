@@ -4,13 +4,11 @@ services:
   - docker
 
 script:
-  - docker build -t "$DOCKER_ID"/multi-client ./client   # multi- for image name, ./client is build context using by default Dockerfile to build
   - docker build -t "$DOCKER_ID"/multi-nginx ./nginx
   - docker build -t "$DOCKER_ID"/multi-server ./server
 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
-  - docker push "$DOCKER_ID"/multi-client
   - docker push "$DOCKER_ID"/multi-nginx
   - docker push "$DOCKER_ID"/multi-server
 
