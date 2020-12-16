@@ -158,4 +158,3 @@ yarn-error.log*
 
 server/package-lock.json
 package-lock.json
-config/

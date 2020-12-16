@@ -1,10 +1,16 @@
 const { items, users } = require('../models');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const fs=require('fs');
 
 module.exports = {
   items: {
     get: function (req, res) {
+      
+      fs.readFileSync('./db.json', 'utf8', function(err, data){
+        res.json(data);
+      })
+
       items.findAll({
         attribute: ["title", "description", "price", "descriptionUrl", "imageUrl"],
         order: [['id', 'desc']]

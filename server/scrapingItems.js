@@ -8,12 +8,9 @@
 
 //  npx sequelize-cli db:migrate
 
-
-
-
 const { items } = require('./models');
 
-const Xvfb=require('xvfb');
+// const Xvfb=require('xvfb');
 const cheerio=require("cheerio");
 const Nightmare=require("nightmare");
 const nightmare=Nightmare({show:false});  // show browser
@@ -23,13 +20,13 @@ const fs=require('fs');
 // apt-get update
 // apt-get install -y xvfb x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic x11-apps clang libdbus-1-dev libgtk2.0-dev libnotify-dev libgnome-keyring-dev libgconf2-dev libasound2-dev libcap-dev libcups2-dev libxtst-dev libxss1 libnss3-dev gcc-multilib g++-multilib
 
-let xvfb=new Xvfb(); // for nightmare.js on remote linux server
+// let xvfb=new Xvfb(); // for nightmare.js on remote linux server
 
-try {
-   xvfb.startSync();
-} catch(e){
-   console.log(e);
-}
+// try {
+//    xvfb.startSync();
+// } catch(e){
+//    console.log(e);
+// }
 
 const sampleResult={
     title:"THOM BROWNE",
@@ -112,7 +109,7 @@ async function itemsScraper(){
    // let data={};
       let data=[];
    // for(const [key] of Object.entries(category)){
-      for(let i=1 ; i<=1 ; i++){
+      for(let i=1 ; i<=3 ; i++){
          let key='NewIn' // new in
          let scraped=await scrape(i,key);
          data=[...data, ...scraped];
@@ -130,19 +127,24 @@ async function itemsScraper(){
    //  console.log(Object.keys(items));
     
 
-   items.destroy({
-        where: {},
-        truncate: true
-   })
+   // items.destroy({
+   //      where: {},
+   //      truncate: true
+   // })
 
    for(let i=0 ; i<data.length ; i++){
-    items.create({title : data[i].title, description:data[i].description, price : data[i].price, descriptionUrl : data[i].descriptionUrl,
-    imageUrl : data[i].imageUrl})
-        .then((item, err) => {
-          if(err) console.log('data insertion error')
-          else console.log('data scraped')
-        });
+   //  items.create({title : data[i].title, description:data[i].description, price : data[i].price, descriptionUrl : data[i].descriptionUrl,
+   //  imageUrl : data[i].imageUrl})
+   //      .then((item, err) => {
+   //        if(err) console.log('data insertion error')
+   //        else console.log('data scraped')
+   //      });
+    
    }
+   let temp={items:[]}
+   temp.items.push(data);
+   temp=JSON.stringify(temp)
+   fs.writeFileSync('db.json',temp);
 
    await nightmare.end();
 }
