@@ -6,7 +6,8 @@ const morgan=require('morgan');
 const compression=require('compression');
 const helmet=require('helmet');
 require('dotenv').config();
-
+console.log(process.env.NODE_ENV);
+if(process.env.MYSQL_DATABASE) console.log(process.env.MYSQL)
 let router = require("./routes/routes.js");
 
 // models.sequelize.sync().then( () => {
