@@ -109,7 +109,7 @@ async function itemsScraper(){
    // let data={};
       let data=[];
    // for(const [key] of Object.entries(category)){
-      for(let i=1 ; i<=3 ; i++){
+      for(let i=1 ; i<=1 ; i++){
          let key='NewIn' // new in
          let scraped=await scrape(i,key);
          data=[...data, ...scraped];
@@ -141,10 +141,8 @@ async function itemsScraper(){
    //      });
     
    }
-   let temp={items:[]}
-   temp.items.push(data);
-   temp=JSON.stringify(temp)
-   fs.writeFileSync('db.json',temp);
+   
+   fs.writeFileSync('db.txt',JSON.stringify(data));
 
    await nightmare.end();
 }

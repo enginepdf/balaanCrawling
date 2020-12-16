@@ -6,16 +6,21 @@ const fs=require('fs');
 module.exports = {
   items: {
     get: function (req, res) {
-
-      items.findAll({
-        attribute: ["title", "description", "price", "descriptionUrl", "imageUrl"],
-        order: [['id', 'desc']]
-      }).then((data, err) => {
-        if (err) {
-          return res.send(err);
-        }
+      fs.readFile('./db.txt', 'utf8', function(err, data){
+        if(err) console.log(err);
         res.json(data);
-      });
+
+      })
+
+      // items.findAll({
+      //   attribute: ["title", "description", "price", "descriptionUrl", "imageUrl"],
+      //   order: [['id', 'desc']]
+      // }).then((data, err) => {
+      //   if (err) {
+      //     return res.send(err);
+      //   }
+      //   res.json(data);
+      // });
     },
 
     insert: async function (req, res) {
@@ -38,9 +43,9 @@ module.exports = {
             if (err) {
               return res.send(err);
             }
-            res.sendStatus(201);
           });
         }
+        res.sendStatus(201);
       })
 
       
