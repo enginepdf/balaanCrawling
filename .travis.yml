@@ -16,8 +16,8 @@ script:
 deploy:
   provider: elasticbeanstalk  # set of containers hosting delegate to Amazon Elastic Container Service(ECS) with task defintions
   region: us-east-2
-  app: scraping
-  env: Scraping-env  
+  app: docker-scraping
+  env: DockerScraping-env  
   bucket_name: elasticbeanstalk-us-east-2-601631817381  
   bucket_path: scrapings
   on:
