@@ -5,6 +5,7 @@ const models = require('./models/index');
 const morgan=require('morgan');
 const compression=require('compression');
 const helmet=require('helmet');
+require('dotenv').config();
 
 let router = require("./routes/routes.js");
 
@@ -24,7 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(
   cors({
-    origin: ['http://localhost:3000', 'http://localhost:3050'],
+    origin: ['http://localhost:3000', 'http://localhost:3050', '*'],
     methods: ['GET', 'POST'],
     credentials: true
   })
