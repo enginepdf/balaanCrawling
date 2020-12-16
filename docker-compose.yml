@@ -21,7 +21,6 @@ services:
       - '3060:80' # local to inside of container
     depends_on:
       - api
-      - client
   api:
     build:
       dockerfile: Dockerfile.dev
@@ -35,14 +34,6 @@ services:
       DATABASE_HOST: mysql
     depends_on:
       - mysql
-  client:
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./client
-    volumes:
-      - /app/node_modules
-      - ./client:/app
-    stdin_open: true
 
 
       # docker-compose up

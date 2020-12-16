@@ -2,18 +2,11 @@
   "AWSEBDockerrunVersion": 2,
   "containerDefinitions": [ 
     {
-      "name": "client",  
-      "image": "enginepdf/multi-client",
-      "hostname": "client",   
-      "essential": false,
-      "memory": 128 
-    },
-    {
       "name": "server",
       "image": "enginepdf/multi-server",
       "hostname": "api",
       "essential": false,
-      "memory": 128
+      "memory": 800
     },
     {
       "name": "nginx",
