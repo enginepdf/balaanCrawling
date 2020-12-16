@@ -18,7 +18,7 @@ class SignIn extends React.Component {
   handleSubmit = event => {
     event.preventDefault();   // stopping the original function of form or a, submit tags
 
-    fetch("api/signin", {
+    fetch("http://localhost:3050/signin", {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'

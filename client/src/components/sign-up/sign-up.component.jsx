@@ -19,13 +19,13 @@ class SignUp extends React.Component {
   handleSubmit = async event => {
     event.preventDefault();
 
-    const { password, confirmPassword } = this.state;
+    const { email, password, confirmPassword } = this.state;
 
     if (password !== confirmPassword) {
       alert("passwords don't match");
       return;
     }
-    fetch('api/signup', {
+    fetch('http://localhost:3050/signup', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'

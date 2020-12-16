@@ -19,7 +19,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch('api/items')
+    fetch('http://localhost:3050/items')
       .then(res => res.json())
       .then((data) => {
         this.setState({ items: data });
@@ -28,7 +28,7 @@ class App extends React.Component {
 
   toggleLogin() {
     if(this.state.isLogin){
-      fetch('api/signout')
+      fetch('http://localhost:3050/signout')
         .then(res=>res.json())
         .then((data) => {
           console.log('logged out');
