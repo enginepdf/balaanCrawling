@@ -1,5 +1,5 @@
-## 개요
-- 프로젝트 명 : **Balaan Crawling**
+## 프로젝트명
+- **Balaan Crawling**
 
 
 ## 기술 스택
