@@ -1,6 +1,7 @@
 ## 개요
 - 프로젝트 명 : **Balaan Crawling**
 
+
 ## 기술 스택
 
 ### Front-end
@@ -23,13 +24,15 @@
   development 환경에서 mysql service에 빌드 시 바로 연결되지 않음.(.sh 이용해서 timeout을 주라는 해결책이 있다고 함)
 - travis(CI/CD) - Docker 아이디와 패스워드 등을 환경 변수로 처리. main 브랜치에 commit이 있을 때마다 작동.
   빌드 후, AWS Elastic Beanstalk에 배포하도록 설정.
-- AWS Elastic Beanstalk - 데이터베이스 호스트, 비밀번호, 유저 이름 등을 환경변수로 처리해서 코드에서 보이지 않게 처리.(보안)
+- AWS Elastic Beanstalk - 데이터베이스 호스트, 비밀번호, 유저 이름 등을 환경변수로 처리해서 코드에 보이지 않게 처리.(보안)
   travis에서 빌드 성공했지만 Beanstalk 배포에는 실패
+
 
 ## 스크릿샷
 
 <img width="1670" alt="Screen Shot 2020-12-17 at 12 17 58 PM" src="https://user-images.githubusercontent.com/62423408/102441141-0bdf7300-4065-11eb-9a8c-f677afb42de1.png">
 <img width="1651" alt="Screen Shot 2020-12-17 at 12 17 55 PM" src="https://user-images.githubusercontent.com/62423408/102441148-0eda6380-4065-11eb-83ea-ece74786cf85.png">
+
 
 ## 주요 기능 안내
 
@@ -39,6 +42,7 @@
    (페이지, 카테고리별 크롤링 가능)
 4. 크롤링한 데이터를 '/items'에서 grid 형식으로 보여줌
 5. AWS(S3, EC2, RDS) 이용한 배포 및 관리
+
 
 ## 설치 & 사용 방법(local development)
 ### /server(Branch: main)
