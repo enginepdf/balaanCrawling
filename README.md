@@ -8,8 +8,8 @@
 - React.js : 처음부터 모든 것을 구현하지는 않았음. 기존에 가지고 있던 코드를 일부 변경.
 
 ### Back-end
-- Node.js : 서버 관리를 위함.
-- Express.js : 라우터 관리 등을 위함.
+- Node.js : compression, helmet 라이브러리를 사용함.
+- Express.js : node.js와 함께 사용.
 - JWT : 로그인 기능 구현을 위함.
 - MySQL : EC2에서 RDS(Mysql)로 연결 후 Sequelize 이용.
 - Sequelize : config.js 이용, development와 production 모드로 구분해서 작동.
