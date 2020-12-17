@@ -17,7 +17,7 @@
   로컬 /server에 db.txt에 데이터 저장 후 배포.
 
 ### Deployment
-- AWS(EC2 / RDS / S3)
+- AWS(EC2 / RDS / S3) : EC2에서 RDS로 연결(server 및 mysql). S3에 client 배포. 
 
 ### 배포되지는 않았지만 개발 시도에 사용한 것(main branch에서 코드 확인 가능)
 - Nginx : 외부 접속 포트 3060에서 nginx의 80 포트로 연결 후 client(포트 3000), api(포트 3050)로 요청 전달하도록 설계.
