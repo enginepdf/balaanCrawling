@@ -19,6 +19,9 @@
 
 ## 스크릿샷
 
+<img width="1670" alt="Screen Shot 2020-12-17 at 12 17 58 PM" src="https://user-images.githubusercontent.com/62423408/102441141-0bdf7300-4065-11eb-9a8c-f677afb42de1.png">
+<img width="1651" alt="Screen Shot 2020-12-17 at 12 17 55 PM" src="https://user-images.githubusercontent.com/62423408/102441148-0eda6380-4065-11eb-83ea-ece74786cf85.png">
+
 ## 주요 기능 안내
 
 1. 회원가입
