@@ -16,7 +16,7 @@
 - Nightmare : local에서는 정상 작동하지만, remote linux 환경에서 screen 등의 문제로 작동하지 않아서 
   로컬 /server에 db.txt에 데이터 저장 후 배포.
 
-### Etc.
+### Deployment
 - AWS(EC2 / RDS / S3)
 
 ### 배포되지는 않았지만 개발 시도에 사용한 것(main branch에서 코드 확인 가능)
