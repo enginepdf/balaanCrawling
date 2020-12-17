@@ -17,6 +17,15 @@
 ### Etc.
 - AWS(EC2 / RDS / S3)
 
+### 배포되지는 않았지만 개발 시도에 사용한 것(main branch에서 코드 확인 가능)
+- Nginx : 외부 접속 포트 3060에서 nginx의 80 포트로 연결 후 client(포트 3000), api(포트 3050)로 요청 전달하도록 설계
+- Docker : Docker-Compose 이용 시 내부 service container들 간에 네트워크 연결이 디폴트로 된다는 점을 이용 
+  development 환경에서 mysql service에 빌드 시 바로 연결되지 않음(.sh 이용해서 timeout을 주라는 해결책이 있다고 함)
+- travis(CI/CD) - Docker 아이디와 패스워드 등을 환경 변수로 처리. main 브랜치에 commit이 있을 때마다 작동. 빌드 후 
+  AWS Elastic Beanstalk에 배포하도록 설정
+- AWS Elastic Beanstalk - 데이터베이스 호스트, 비밀번호, 유저 이름 등을 환경변수로 처리해서 코드에서 보이지 않게 처리(보안을 위해).   
+  travis에서 빌드 성공했지만 Beanstalk 배포에는 실패
+
 ## 스크릿샷
 
 <img width="1670" alt="Screen Shot 2020-12-17 at 12 17 58 PM" src="https://user-images.githubusercontent.com/62423408/102441141-0bdf7300-4065-11eb-9a8c-f677afb42de1.png">
