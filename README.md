@@ -5,21 +5,23 @@
 ## 기술 스택
 
 ### Front-end
-- React.js
+- React.js : 처음부터 모든 것을 구현하지는 않았음. 기존에 가지고 있던 코드를 일부 변경.
 
 ### Back-end
-- Node.js
-- Express.js
-- JWT
-- MySQL
-- Sequelize
-- Nightmare
+- Node.js : 서버 관리를 위함.
+- Express.js : 라우터 관리 등을 위함.
+- JWT : 로그인 기능 구현을 위함.
+- MySQL : EC2에서 RDS(Mysql)로 연결 후 Sequelize 이용.
+- Sequelize : config.js 이용, development와 production 모드로 구분해서 작동.
+- Nightmare : local에서는 정상 작동하지만, remote linux 환경에서 screen 등의 문제로 작동하지 않아서 
+  로컬 /server에 db.txt에 데이터 저장 후 배포.
 
 ### Etc.
 - AWS(EC2 / RDS / S3)
 
 ### 배포되지는 않았지만 개발 시도에 사용한 것(main branch에서 코드 확인 가능)
 - Nginx : 외부 접속 포트 3060에서 nginx의 80 포트로 연결 후 client(포트 3000), api(포트 3050)로 요청 전달하도록 설계.
+  (client를 포함하는 코드는 feature branch에서 확인)
 - Docker : Docker-Compose 이용 시 내부 service container들 간에 네트워크 연결이 디폴트로 된다는 점을 이용. 
   development 환경에서 mysql service에 빌드 시 바로 연결되지 않음.(.sh 이용해서 timeout을 주라는 해결책이 있다고 함)
 - Travis(CI/CD) - Docker 아이디와 패스워드 등을 환경 변수로 처리. main 브랜치에 commit이 있을 때마다 작동.
