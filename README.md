@@ -36,6 +36,7 @@
 
 <img width="1670" alt="Screen Shot 2020-12-17 at 12 17 58 PM" src="https://user-images.githubusercontent.com/62423408/102441141-0bdf7300-4065-11eb-9a8c-f677afb42de1.png">
 <img width="1651" alt="Screen Shot 2020-12-17 at 12 17 55 PM" src="https://user-images.githubusercontent.com/62423408/102441148-0eda6380-4065-11eb-83ea-ece74786cf85.png">
+<img width="418" alt="Screen Shot 2020-12-17 at 2 17 29 PM" src="https://user-images.githubusercontent.com/62423408/102447129-b14d1380-4072-11eb-9951-76f5394524ad.png">
 
 
 ## 주요 기능 안내
