@@ -22,10 +22,12 @@
 - Nginx : 외부 접속 포트 3060에서 nginx의 80 포트로 연결 후 client(포트 3000), api(포트 3050)로 요청 전달하도록 설계.
 - Docker : Docker-Compose 이용 시 내부 service container들 간에 네트워크 연결이 디폴트로 된다는 점을 이용. 
   development 환경에서 mysql service에 빌드 시 바로 연결되지 않음.(.sh 이용해서 timeout을 주라는 해결책이 있다고 함)
-- travis(CI/CD) - Docker 아이디와 패스워드 등을 환경 변수로 처리. main 브랜치에 commit이 있을 때마다 작동.
+- Travis(CI/CD) - Docker 아이디와 패스워드 등을 환경 변수로 처리. main 브랜치에 commit이 있을 때마다 작동.
   빌드 후, AWS Elastic Beanstalk에 배포하도록 설정.
 - AWS Elastic Beanstalk - 데이터베이스 호스트, 비밀번호, 유저 이름 등을 환경변수로 처리해서 코드에 보이지 않게 처리.(보안)
   travis에서 빌드 성공했지만 Beanstalk 배포에는 실패
+- Heroku - client(Branch: final) 배포는 했지만 https를 사용하고 있어서 EC2로의 http 연결이 안 됨.
+  (SSL 인증서 혹은 nginx 이용이 필요하다고 함)
 
 
 ## 스크릿샷
@@ -45,17 +47,15 @@
 
 
 ## 설치 & 사용 방법(local development)
-### /server(Branch: main)
+### /server(Branch: main), /client(Branch: final)
 1. npm install
-
-### /server/scraping
-1. node scrapingItems.js
 
 ### /server
 1. export DATABASE_PASSWORD='(mysql 루트 비밀번호)'
 2. export SECRET_KEY='(jwt 사용을 위한 salt)'
 3. npx sequelize-cli db:migrate
-4. node app.js
+4. node scrapingItems.js
+5. node app.js
 
 ### /client(Branch : feature, final)
 1. npm start
