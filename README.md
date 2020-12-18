@@ -8,11 +8,11 @@
 - React.js : 처음부터 모든 것을 구현하지는 않았음. 기존에 가지고 있던 코드를 일부 변경.
 
 ### Back-end
-- Node.js : compression, helmet 라이브러리를 사용함.
+- Node.js : 서버 작동을 위함. compression, helmet 라이브러리를 사용함.
 - Express.js : node.js와 함께 사용.
 - JWT : 로그인 기능 구현을 위함.
 - MySQL : EC2에서 RDS(Mysql)로 연결 후 Sequelize 이용.
-- Sequelize : config.js 이용, development와 production 모드로 구분해서 작동.
+- Sequelize : config.js 이용, Development와 Production 모드로 구분해서 작동.
 - Nightmare : local에서는 정상 작동하지만, remote linux 환경에서 screen 등의 문제로 작동하지 않아서 
   로컬 /server에 db.txt에 데이터 저장 후 배포.
 
