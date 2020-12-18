@@ -28,7 +28,7 @@
   빌드 후, AWS Elastic Beanstalk에 배포하도록 설정.
 - AWS Elastic Beanstalk - 데이터베이스 호스트, 비밀번호, 유저 이름 등을 환경변수로 처리해서 코드에 보이지 않게 처리.(보안)
   travis에서 빌드 성공했지만 Beanstalk 배포에는 실패.
-- Heroku - client(Branch: final) 배포는 했지만 https를 사용하고 있어서 EC2로의 http 연결이 안 됨.
+- Heroku - client(Branch : final) 배포는 했지만 https를 사용하고 있어서 EC2로의 http 연결이 안 됨.
   (SSL 인증서 혹은 nginx 이용이 필요하다고 함)
 
 
@@ -49,8 +49,8 @@
 5. AWS(S3, EC2, RDS) 이용한 배포 및 관리
 
 
-## 설치 & 사용 방법(local development)
-### /server(Branch: main), /client(Branch: final)
+## 설치 & 사용 방법(Local Development)
+### /server(Branch : main), /client(Branch : final)
 1. npm install
 
 ### /server
@@ -62,6 +62,7 @@
 
 ### /client(Branch : feature, final)
 1. npm start
+2. docker-compose up --build(Branch : feature) : localhost:3060으로 client container 접근(api, mysql, client container에 에러 존재)
 
 
 
