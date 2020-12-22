@@ -53,7 +53,7 @@
 ### /server(Branch : main), /client(Branch : final)
 1. npm install
 
-### /server
+### /server(Branch : main)
 1. export DATABASE_PASSWORD='(mysql 루트 비밀번호)'
 2. export SECRET_KEY='(jwt 사용을 위한 salt)'
 3. npx sequelize-cli db:migrate
